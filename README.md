@@ -23,6 +23,7 @@ I am is always open to feedback and suggestions. If you have any comments or wan
 
 ## Contact
 For any inquiries or to get in touch with me, you can reach out via email at [hello@kelvin.st](mailto:hello@kelvin.st).
+
 ---
 
 Explore the website at [kelvin.st](https://kelvin.st) to learn more about my skills, projects, and experiences.
