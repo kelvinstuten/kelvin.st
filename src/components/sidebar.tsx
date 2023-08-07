@@ -39,7 +39,7 @@ export default function Sidebar() {
                 </ul>
             </div>
             <div className="place-content-bottom self-center xl:self-end">
-                <p className="text-center">Made with <FontAwesomeIcon icon={faHeart} /></p>
+                <p className="text-center">Made with <FontAwesomeIcon className="animate-ping" icon={faHeart} /></p>
             </div>
         </div>
     );

@@ -60,7 +60,6 @@ export default function RootLayout({
             </div>
             <main className="custom-main grid p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
               {children}
-              {children}
             </main>
         </div>
       </body>
