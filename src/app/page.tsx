@@ -35,7 +35,7 @@ export default function Home() {
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Blockchain</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Docker</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Microservices</li>
-            <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Search Engine Optimalisation (SEO)</li>
+            <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Search Engine Optimization (SEO)</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />.NET</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />C#</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Python</li>
