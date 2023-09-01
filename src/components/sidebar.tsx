@@ -14,7 +14,7 @@ export default function Sidebar() {
             <div className="place-content-top mb-12">
                 <div className="relative m-auto mb-5 w-[80%] pb-[80%] sm:w-[50%] sm:pb-[50%] md:w-[90%] md:pb-[90%] lg:w-[70%] lg:pb-[70%]">
                     <Image className="w-full h-full rounded-[50%] overflow-hidden"
-                        src="/images/kelvinstuten.jpg"
+                        src="/images/kelvinstuten.png"
                         fill={true}
                         alt="Kelvin Stuten, DevOps Engineer, exploring nature with his camera"
                         priority
