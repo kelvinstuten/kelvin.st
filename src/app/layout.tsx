@@ -1,6 +1,9 @@
 // NextJS import
 import type { Metadata } from 'next'
 
+// Vercel Analytics
+import { Analytics } from '@vercel/analytics/react';
+
 // Google font import
 import { Inter } from 'next/font/google'
 
@@ -60,6 +63,7 @@ export default function RootLayout({
             </div>
             <main className="custom-main grid p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
               {children}
+              <Analytics />
             </main>
         </div>
       </body>
