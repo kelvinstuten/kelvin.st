@@ -20,7 +20,7 @@
     "@vercel/analytics": "^1.1.1",
     "autoprefixer": "10.4.19",
     "eslint": "^9.0.0",
-    "next": "^14.1.4",
+    "next": "^14.2.1",
     "npm": "^10.5.2",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
