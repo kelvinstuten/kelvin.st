@@ -25,7 +25,8 @@ export default function Home() {
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Continuous Delivery (CD)</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Linux System Administration</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />SaltStack</li>
-            <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Akamai services</li>
+            <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Akamai</li>
+            <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />LogicMonitor</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Webdesign</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Git</li>
             <li><FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />Photography</li>
