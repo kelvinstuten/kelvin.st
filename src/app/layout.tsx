@@ -64,6 +64,7 @@ export default function RootLayout({
             <main className="custom-main grid p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
               {children}
               <Analytics />
+              <SpeedInsights />
             </main>
         </div>
       </body>
