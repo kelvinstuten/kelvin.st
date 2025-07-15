@@ -13,11 +13,16 @@ export default function Sidebar() {
         <div className="custom-sidebar grid">
             <div className="place-content-top mb-12">
                 <div className="relative m-auto mb-5 w-[80%] pb-[80%] sm:w-[50%] sm:pb-[50%] md:w-[90%] md:pb-[90%] lg:w-[70%] lg:pb-[70%]">
-                    <Image className="w-full h-full rounded-[50%] overflow-hidden"
+                    <Image 
+                        className="w-full h-full rounded-[50%] overflow-hidden"
                         src="/images/kelvinstuten.jpg"
                         fill={true}
+                        sizes="(max-width: 640px) 80vw, (max-width: 768px) 50vw, (max-width: 1024px) 90vw, 70vw"
                         alt="Kelvin Stuten, DevOps Engineer, exploring nature with his camera"
                         priority
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejFMmeRgQ0bGB/wADy7NedbDaHrTfG+d+r+q9VNHEoGhUd7Rv4KXUX+oL5qvqZW"
+                        quality={85}
                     />
                 </div>
                 <div className="text-center">

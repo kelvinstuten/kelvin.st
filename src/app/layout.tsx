@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 // Vercel Analytics
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Google font import
 import { Inter } from 'next/font/google'
@@ -64,6 +65,7 @@ export default function RootLayout({
             <main className="custom-main grid p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
               {children}
               <Analytics />
+              <SpeedInsights />
             </main>
         </div>
       </body>
