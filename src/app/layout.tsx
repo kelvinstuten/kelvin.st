@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 // Vercel Analytics
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Google font import
 import { Inter } from 'next/font/google'
