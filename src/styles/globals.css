@@ -18,11 +18,23 @@
   }
 }
 
-.custom-main{
+.custom-main {
   background-color: #012030;
   color: #fff;
 }
 
 .custom-sidebar{
+  background-color: #ffffff;
   color: #012030;
+}
+
+/* Dark mode */
+.dark .custom-main {
+  background-color: #001925;
+  color: #d3f1ff;
+}
+
+.dark .custom-sidebar {
+  background-color: #171717;
+  color: #d3f1ff;
 }

@@ -8,9 +8,13 @@ import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faInstagram, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons'
 
+// Component imports
+import ThemeToggle from './theme-toggle'
+
 export default function Sidebar() {
     return (
-        <div className="custom-sidebar grid">
+        <div className="grid">
+            <ThemeToggle />
             <div className="place-content-top mb-12">
                 <div className="relative m-auto mb-5 w-[80%] pb-[80%] sm:w-[50%] sm:pb-[50%] md:w-[90%] md:pb-[90%] lg:w-[70%] lg:pb-[70%]">
                     <Image 
