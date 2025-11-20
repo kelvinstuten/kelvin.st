@@ -12,6 +12,8 @@ const nextConfig = {
     minimumCacheTTL: 604800, // 7 days
   },
 
+  turbopack: {},
+
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: ['@fortawesome/react-fontawesome', '@fortawesome/free-solid-svg-icons', '@fortawesome/free-brands-svg-icons'],
