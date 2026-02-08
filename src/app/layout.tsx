@@ -23,7 +23,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Kelvin Stuten | Tech Lead DevOps',
-  description: 'Who is Kelvin Stuten? Tech Lead DevOps | Cloud computing | Kubernetes | Webdevelopment',
+  description: 'Who is Kelvin Stuten? DevOps Tech Lead | Cloud computing | Kubernetes | Webdevelopment',
   icons: [
     {
       rel: 'icon',
