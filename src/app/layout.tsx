@@ -22,7 +22,7 @@ import '@/styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Kelvin Stuten | Tech Lead DevOps',
+  title: 'Kelvin Stuten | DevOps Tech Lead',
   description: 'Who is Kelvin Stuten? DevOps Tech Lead | Cloud computing | Kubernetes | Webdevelopment',
   icons: [
     {
