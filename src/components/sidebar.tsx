@@ -27,7 +27,7 @@ export default function Sidebar() {
                 </div>
                 <div className="text-center">
                     <h1 className="text-3xl sm:text-3xl md:text-2xl lg:text-3xl font-bold">Kelvin Stuten</h1>
-                    <h2 className="text-2xl sm:text-2xl md:text-xl lg:text-2xl">Tech Lead DevOps</h2>
+                    <h2 className="text-2xl sm:text-2xl md:text-xl lg:text-2xl">DevOps Tech Lead</h2>
                 </div>
             </div>
             <div className="place-content-center self-center mb-12">
