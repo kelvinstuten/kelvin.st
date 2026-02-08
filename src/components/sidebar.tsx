@@ -18,7 +18,7 @@ export default function Sidebar() {
                         src="/images/kelvinstuten.jpg"
                         fill={true}
                         sizes="(max-width: 640px) 80vw, (max-width: 768px) 50vw, (max-width: 1024px) 90vw, 70vw"
-                        alt="Kelvin Stuten, DevOps Engineer, exploring nature with his camera"
+                        alt="Kelvin Stuten, Tech Lead and DevOps Engineer, exploring nature with his camera"
                         priority
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejFMmeRgQ0bGB/wADy7NedbDaHrTfG+d+r+q9VNHEoGhUd7Rv4KXUX+oL5qvqZW"
@@ -27,7 +27,7 @@ export default function Sidebar() {
                 </div>
                 <div className="text-center">
                     <h1 className="text-3xl sm:text-3xl md:text-2xl lg:text-3xl font-bold">Kelvin Stuten</h1>
-                    <h2 className="text-2xl sm:text-2xl md:text-xl lg:text-2xl">DevOps Engineer</h2>
+                    <h2 className="text-2xl sm:text-2xl md:text-xl lg:text-2xl">Tech Lead DevOps</h2>
                 </div>
             </div>
             <div className="place-content-center self-center mb-12">
