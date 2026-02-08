@@ -51,7 +51,7 @@ export default function Home() {
             <p className="text-4xl md:text-5xl 2xl:text-6xl ">Hi, I&apos;m Kelvin!</p>
             <p className="text-xl md:text-2xl 2xl:text-3xl">Started as a student <FontAwesomeIcon icon={faGraduationCap} /> web designer <FontAwesomeIcon icon={faPalette} /></p>
             <p className="text-xl md:text-2xl 2xl:text-3xl">Followed <FontAwesomeIcon icon={faRoute} /> my passion to become a front and backend web developer <FontAwesomeIcon icon={faCode} /></p>
-            <p className="text-xl md:text-2xl 2xl:text-3xl">And finally grown up <FontAwesomeIcon icon={faSeedling} /> to be a real DevOps engineer <FontAwesomeIcon icon={faCloud} /></p>
+            <p className="text-xl md:text-2xl 2xl:text-3xl">And finally grown up <FontAwesomeIcon icon={faSeedling} /> to be a Tech Lead and DevOps engineer <FontAwesomeIcon icon={faCloud} /></p>
         </div>
         <div className='grid gap-2'>
           <p className="text-xl md:text-2xl 2xl:text-3xl">And did you know that I picked up some cool skills along the way?</p>
