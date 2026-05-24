@@ -37,6 +37,20 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
           },
+          {
+            key: 'Content-Security-Policy',
+            // next/font serves Google Fonts locally, so no external font sources needed.
+            // 'unsafe-inline' is required for Next.js inline scripts/styles.
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data:",
+              "font-src 'self'",
+              "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+              "frame-ancestors 'none'",
+            ].join('; '),
+          },
         ],
       },
     ]

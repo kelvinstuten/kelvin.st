@@ -1,48 +1,6 @@
-// FontAwesome import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGraduationCap, faCode, faSeedling, faRoute, faCircle, faCloud, faPalette } from '@fortawesome/free-solid-svg-icons'
-
-// Skills data
-const skills = [
-  'Cloud computing',
-  'Kubernetes',
-  'Webdevelopment',
-  'DevOps',
-  'Azure Cloud & Azure Devops',
-  'Continuous Integration (CI)',
-  'Continuous Delivery (CD)',
-  'Linux System Administration',
-  'SaltStack',
-  'Akamai',
-  'LogicMonitor',
-  'Webdesign',
-  'Git',
-  'Photography',
-  'Photoshop',
-  'Lightroom',
-  'Openstack',
-  'Blockchain',
-  'Docker',
-  'Microservices',
-  'Search Engine Optimization (SEO)',
-  '.NET',
-  'C#',
-  'Python',
-  'ReactJS',
-  'NextJS',
-  'Bicep/ARM',
-  'Yaml',
-  'Javascript',
-  'TypeScript',
-  'HTML',
-  'CSS',
-  'jQuery',
-  'SQL',
-  'MySQL',
-  'PostgreSQL',
-  'MongoDB',
-  'Scrum'
-]
+import { skills } from '@/data/skills'
 
 export default function Home() {
   return (

@@ -21,9 +21,28 @@ import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const siteUrl = 'https://kelvin.st'
+const title = 'Kelvin Stuten | DevOps Tech Lead'
+const description =
+  'Kelvin Stuten is a DevOps Tech Lead specializing in Azure, Kubernetes, CI/CD pipelines, and cloud-native web development.'
+
 export const metadata: Metadata = {
-  title: 'Kelvin Stuten | DevOps Tech Lead',
-  description: 'Who is Kelvin Stuten? DevOps Tech Lead | Cloud computing | Kubernetes | Webdevelopment',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title,
+    description,
+    images: [{ url: '/images/kelvinstuten.jpg', width: 800, height: 800, alt: 'Kelvin Stuten' }],
+  },
+  twitter: {
+    card: 'summary',
+    title,
+    description,
+    images: ['/images/kelvinstuten.jpg'],
+  },
   icons: [
     {
       rel: 'icon',
@@ -58,6 +77,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Person',
+                name: 'Kelvin Stuten',
+                url: siteUrl,
+                jobTitle: 'DevOps Tech Lead',
+                email: 'hello@kelvin.st',
+                image: `${siteUrl}/images/kelvinstuten.jpg`,
+                sameAs: [
+                  'https://www.linkedin.com/in/kelvinstuten',
+                  'https://github.com/kelvinstuten',
+                  'https://www.instagram.com/kelvinstuten',
+                ],
+                knowsAbout: [
+                  'DevOps', 'Kubernetes', 'Azure', 'CI/CD', 'Cloud Computing',
+                  'Web Development', 'Docker', 'Microservices', 'TypeScript',
+                ],
+              }),
+            }}
+          />
           <div className="font-sans md:flex">
             <div className="grid p-10 top-0 relative md:sticky md:p-10 xl:p-12 md:basis-4/12 2xl:basis-3/12 md:max-h-screen md:h-screen">
               <Sidebar/>
