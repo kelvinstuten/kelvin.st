@@ -18,11 +18,31 @@
   }
 }
 
-.custom-main{
-  background-color: #012030;
-  color: #fff;
+/* Enable class-based dark mode for next-themes */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --main-bg: #ffffff;
+  --main-text: #012030;
+  --sidebar-bg: #f1f5f9;
+  --sidebar-text: #012030;
 }
 
-.custom-sidebar{
-  color: #012030;
+.dark {
+  --main-bg: #012030;
+  --main-text: #ffffff;
+  --sidebar-bg: #011825;
+  --sidebar-text: #ffffff;
+}
+
+.custom-main {
+  background-color: var(--main-bg);
+  color: var(--main-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.custom-sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }

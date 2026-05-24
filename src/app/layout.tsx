@@ -15,6 +15,7 @@ config.autoAddCss = false
 
 // Component Imports
 import Sidebar from '../components/sidebar';
+import ThemeProvider from '../components/ThemeProvider';
 
 // Stylesheet Imports
 import '@/styles/globals.css'
@@ -75,8 +76,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <ThemeProvider>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -110,6 +112,7 @@ export default function RootLayout({
               <SpeedInsights />
             </main>
         </div>
+        </ThemeProvider>
       </body>
     </html>
   )

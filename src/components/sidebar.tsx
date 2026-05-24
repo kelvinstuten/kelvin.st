@@ -1,12 +1,13 @@
 // NextJS import
 import Link from "next/link"
 import Image from 'next/image'
+import ThemeToggle from './ThemeToggle'
 
 // FontAwesome import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { } from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faInstagram, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 export default function Sidebar() {
     return (
@@ -41,6 +42,11 @@ export default function Sidebar() {
                 <h3 className="text-center text-md uppercase mb-2">or say hello!</h3>
                 <ul className="grid place-content-center gap-3">
                     <li className="font-bold hover:scale-110"><Link className="block" href="mailto:hello@kelvin.st" target="_blank"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faEnvelope} />E-mail</Link></li>
+                </ul>
+            </div>
+            <div className="place-content-center self-center mb-12">
+                <ul className="grid place-content-center gap-3">
+                    <li><ThemeToggle /></li>
                 </ul>
             </div>
             <div className="place-content-bottom self-center xl:self-end">
