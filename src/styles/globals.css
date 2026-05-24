@@ -20,6 +20,15 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Body background matches sidebar so no gaps show */
+html {
+  background-color: #ffffff;
+}
+
+html.dark {
+  background-color: #011825;
+}
+
 /* Main area never changes */
 .custom-main {
   background-color: #012030;
