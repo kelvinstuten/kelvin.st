@@ -34,7 +34,7 @@ const LINES: Segment[][] = [
 
 // Flatten each line into individual units (char or icon)
 const ALL_UNITS: Unit[][] = LINES.map(segments =>
-  segments.flatMap(seg =>
+  segments.flatMap((seg): Unit[] =>
     seg.type === 'text'
       ? [...seg.value].map(char => ({ type: 'char' as const, char }))
       : [{ type: 'icon' as const, icon: seg.icon }]
