@@ -29,6 +29,15 @@ html.dark {
   background-color: #011825;
 }
 
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 0.8s step-start infinite;
+}
+
 /* Main area never changes */
 .custom-main {
   background-color: #012030;
