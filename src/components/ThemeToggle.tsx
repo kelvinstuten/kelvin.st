@@ -9,7 +9,6 @@ export default function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // Prevent hydration mismatch — only render after mount
   useEffect(() => setMounted(true), [])
 
   if (!mounted) return null
@@ -20,13 +19,9 @@ export default function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      className="flex items-center gap-2 font-bold hover:scale-110 transition-transform cursor-pointer"
+      className="fixed top-5 right-5 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:scale-110 transition-transform cursor-pointer text-inherit"
     >
-      <FontAwesomeIcon
-        className="text-3xl align-middle"
-        icon={isDark ? faSun : faMoon}
-      />
-      {isDark ? 'Light mode' : 'Dark mode'}
+      <FontAwesomeIcon icon={isDark ? faSun : faMoon} />
     </button>
   )
 }

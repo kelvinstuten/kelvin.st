@@ -18,31 +18,22 @@
   }
 }
 
-/* Enable class-based dark mode for next-themes */
 @variant dark (&:where(.dark, .dark *));
 
-:root {
-  --main-bg: #ffffff;
-  --main-text: #012030;
-  --sidebar-bg: #f1f5f9;
-  --sidebar-text: #012030;
-}
-
-.dark {
-  --main-bg: #012030;
-  --main-text: #ffffff;
-  --sidebar-bg: #011825;
-  --sidebar-text: #ffffff;
-}
-
+/* Main area never changes */
 .custom-main {
-  background-color: var(--main-bg);
-  color: var(--main-text);
+  background-color: #012030;
+  color: #ffffff;
+}
+
+/* Sidebar: white by default, dark when toggled */
+.custom-sidebar {
+  background-color: #ffffff;
+  color: #012030;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.custom-sidebar {
-  background-color: var(--sidebar-bg);
-  color: var(--sidebar-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+.dark .custom-sidebar {
+  background-color: #011825;
+  color: #ffffff;
 }
