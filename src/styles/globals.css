@@ -39,7 +39,6 @@ html.dark {
 .custom-sidebar {
   background-color: #ffffff;
   color: #012030;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dark .custom-sidebar {
