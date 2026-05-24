@@ -15,6 +15,8 @@ config.autoAddCss = false
 
 // Component Imports
 import Sidebar from '../components/sidebar';
+import ThemeProvider from '../components/ThemeProvider';
+import ThemeToggle from '../components/ThemeToggle';
 
 // Stylesheet Imports
 import '@/styles/globals.css'
@@ -75,8 +77,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <ThemeProvider>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -100,6 +103,7 @@ export default function RootLayout({
               }),
             }}
           />
+          <ThemeToggle />
           <div className="font-sans md:flex">
             <div className="grid p-10 top-0 relative md:sticky md:p-10 xl:p-12 md:basis-4/12 2xl:basis-3/12 md:max-h-screen md:h-screen">
               <Sidebar/>
@@ -110,6 +114,7 @@ export default function RootLayout({
               <SpeedInsights />
             </main>
         </div>
+        </ThemeProvider>
       </body>
     </html>
   )

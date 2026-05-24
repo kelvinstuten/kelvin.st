@@ -18,11 +18,30 @@
   }
 }
 
-.custom-main{
-  background-color: #012030;
-  color: #fff;
+@variant dark (&:where(.dark, .dark *));
+
+/* Body background matches sidebar so no gaps show */
+html {
+  background-color: #ffffff;
 }
 
-.custom-sidebar{
+html.dark {
+  background-color: #011825;
+}
+
+/* Main area never changes */
+.custom-main {
+  background-color: #012030;
+  color: #ffffff;
+}
+
+/* Sidebar: white by default, dark when toggled */
+.custom-sidebar {
+  background-color: #ffffff;
   color: #012030;
+}
+
+.dark .custom-sidebar {
+  background-color: #011825;
+  color: #ffffff;
 }
