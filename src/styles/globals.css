@@ -32,6 +32,7 @@ html.dark {
 .custom-main {
   background-color: #012030;
   color: #ffffff;
+  min-height: 550px;
 }
 
 .dark .custom-main {
