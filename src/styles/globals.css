@@ -26,13 +26,16 @@ html {
 }
 
 html.dark {
-  background-color: #071a24;
+  background-color: #012030;
 }
 
-/* Main area never changes */
 .custom-main {
   background-color: #012030;
   color: #ffffff;
+}
+
+.dark .custom-main {
+  background-color: #071a24;
 }
 
 /* Sidebar: white by default, dark when toggled */
