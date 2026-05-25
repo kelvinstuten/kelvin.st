@@ -26,7 +26,7 @@ html {
 }
 
 html.dark {
-  background-color: #011825;
+  background-color: #071a24;
 }
 
 /* Main area never changes */
@@ -42,6 +42,6 @@ html.dark {
 }
 
 .dark .custom-sidebar {
-  background-color: #011825;
+  background-color: #012030;
   color: #ffffff;
 }
