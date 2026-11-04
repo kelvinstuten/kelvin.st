@@ -49,3 +49,75 @@ html.dark {
   background-color: #012030;
   color: #ffffff;
 }
+
+/*
+  Skills terminal intro. Pure CSS so the content is in the server HTML
+  (search engines, no-JS) and only the presentation is animated.
+  Timings are passed in as CSS variables from SkillsTerminal.tsx.
+*/
+.term-type {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+  white-space: nowrap;
+  width: calc(var(--term-chars) * 1ch);
+  animation: term-type var(--term-duration, 700ms) steps(var(--term-chars)) var(--term-delay, 0ms) both;
+}
+
+@keyframes term-type {
+  from {
+    width: 0;
+  }
+}
+
+.term-reveal {
+  animation: term-reveal 300ms ease-out var(--term-delay, 0ms) both;
+}
+
+@keyframes term-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term-type,
+  .term-reveal {
+    animation: none;
+  }
+}
+
+/*
+  Always-visible, theme-matching scrollbar for the skills terminal (desktop).
+  WebKit/Blink get the ::-webkit-scrollbar styles (these also stop macOS from
+  hiding the scrollbar). Firefox, which lacks them, gets the standard properties.
+  The standard properties are not set for Chrome, because they would override
+  the ::-webkit-scrollbar styles there.
+*/
+.term-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.term-scroll::-webkit-scrollbar-track {
+  background: rgb(255 255 255 / 0.04);
+}
+
+.term-scroll::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.22);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.term-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(255 255 255 / 0.38);
+  background-clip: padding-box;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .term-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.3) rgb(255 255 255 / 0.04);
+  }
+}

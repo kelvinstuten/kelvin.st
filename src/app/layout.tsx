@@ -15,6 +15,7 @@ config.autoAddCss = false
 
 // Component Imports
 import Sidebar from '../components/sidebar';
+import { skills } from '@/data/skills';
 import ThemeProvider from '../components/ThemeProvider';
 import ThemeToggle from '../components/ThemeToggle';
 
@@ -96,19 +97,16 @@ export default function RootLayout({
                   'https://github.com/kelvinstuten',
                   'https://www.instagram.com/kelvinstuten',
                 ],
-                knowsAbout: [
-                  'DevOps', 'Kubernetes', 'Azure', 'CI/CD', 'Cloud Computing',
-                  'Web Development', 'Docker', 'Microservices', 'TypeScript',
-                ],
+                knowsAbout: skills,
               }),
             }}
           />
           <ThemeToggle />
-          <div className="font-sans md:flex">
+          <div className="font-sans flex min-h-dvh flex-col md:flex-row">
             <div className="grid p-10 top-0 relative md:sticky md:p-10 xl:p-12 md:basis-4/12 2xl:basis-3/12 md:max-h-screen md:h-screen">
               <Sidebar/>
             </div>
-            <main className="custom-main grid p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
+            <main className="custom-main grid flex-1 p-10 md:p-10 xl:p-12 place-content-center md:basis-8/12 2xl:basis-9/12">
               {children}
               <Analytics />
               <SpeedInsights />
