@@ -1,15 +1,16 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 
+const noopSubscribe = () => () => {}
+
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => setMounted(true), [])
+  // true on the client, false during SSR — avoids a hydration mismatch on the theme icon
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false)
 
   if (!mounted) return null
 

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 // Vercel Analytics
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Google font import
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     title,
     description,
-    images: [{ url: '/images/kelvinstuten.jpg', width: 800, height: 800, alt: 'Kelvin Stuten' }],
+    images: [{ url: '/images/kelvin-stuten-2026.jpg', width: 1200, height: 1200, alt: 'Kelvin Stuten' }],
   },
   twitter: {
     card: 'summary',
     title,
     description,
-    images: ['/images/kelvinstuten.jpg'],
+    images: ['/images/kelvin-stuten-2026.jpg'],
   },
   icons: [
     {
@@ -90,7 +90,7 @@ export default function RootLayout({
                 url: siteUrl,
                 jobTitle: 'DevOps Tech Lead',
                 email: 'hello@kelvin.st',
-                image: `${siteUrl}/images/kelvinstuten.jpg`,
+                image: `${siteUrl}/images/kelvin-stuten-2026.jpg`,
                 sameAs: [
                   'https://www.linkedin.com/in/kelvinstuten',
                   'https://github.com/kelvinstuten',
