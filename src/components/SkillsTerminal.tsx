@@ -22,7 +22,7 @@ const REVEAL_START_MS = TYPE_START_MS + TYPE_DURATION_MS + 250
 const REVEAL_STEP_MS = 140
 const PROMPT_DELAY_MS = REVEAL_START_MS + (skillGroups.length + 1) * REVEAL_STEP_MS
 // Top-level personal commands; favourite games and cars only appear under `favorites`
-const ABOUT_IDS = ['hobbies', 'favorites']
+const ABOUT_IDS = ['hobbies', 'favorites', 'tools']
 const FILES = ['skills/', ...ABOUT_IDS.map((id) => `${id}.txt`)]
 // Commands offered by Tab completion (hidden gimmicks are left out on purpose)
 const COMMANDS = ['help', 'ls', 'cat', 'skills', ...ABOUT_IDS, 'whoami', 'contact', 'clear']
@@ -82,6 +82,7 @@ function run(raw: string): Output | 'clear' {
           ['skills [group]', 'my skills, e.g. skills cloud'],
           ['hobbies', 'what I do when I am not working'],
           ['favorites', 'favourite games, cars & websites'],
+          ['tools', 'tools I work with'],
           ['whoami', 'who is this guy?'],
           ['contact', 'ways to reach me'],
           ['ls / cat', 'browse it like files'],
