@@ -1,29 +1,52 @@
-# README - kelvin.st
+# kelvin.st
 
-## Introduction
-You can find this website live at [kelvin.st](https://kelvin.st). This website showcases the journey and skills I acquired along the way. It is built using Next.js and React, making it a dynamic and modern web application.
+The personal website of Kelvin Stuten, live at [kelvin.st](https://kelvin.st). It shows my journey and skills, with an interactive terminal you can type commands into (try `help`).
 
-## Technologies Used
-The website is built using the following technologies:
-- Next.js: A popular framework for building React applications with server-side rendering capabilities.
-- React: A JavaScript library for building user interfaces.
-- Tailwind CSS: A highly customizable utility-first CSS framework that helps design modern and responsive interfaces.
-- FontAwesome: A library that provides a collection of icons, used to enhance the visual representation of Kelvin's skills.
+## Tech stack
+- [Next.js](https://nextjs.org) (App Router, statically rendered) and React
+- TypeScript
+- [Tailwind CSS](https://tailwindcss.com)
+- [Font Awesome](https://fontawesome.com) icons
+- [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode, following the visitor's system setting
+- Hosted on Vercel, with Vercel Analytics and Speed Insights
 
-## Getting Started
-To run this website locally, follow these steps:
+## Getting started
+Requires Node.js 24 (see `.nvmrc`; with nvm or fnm run `nvm use` / `fnm use`).
 
-1. Clone the repository: `git clone git@github.com:kelvinstuten/kelvin.st.git`
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
-4. Open your web browser and go to `http://localhost:3000` to view the website.
+```bash
+git clone git@github.com:kelvinstuten/kelvin.st.git
+cd kelvin.st
+npm ci --ignore-scripts
+npm run dev
+```
 
-## Feedback and Contributions
-I am is always open to feedback and suggestions. If you have any comments or want to contribute to the project, feel free to open an issue or submit a pull request on the repository.
+Then open http://localhost:3000.
+
+Install with `--ignore-scripts` so package install scripts never run on your machine. When adding or updating packages, only use releases that are at least 3 days old.
+
+## Scripts
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript type check |
+| `npm test` | Unit tests (Node's built-in test runner, no extra dependencies) |
+
+CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, build and `npm audit` on every pull request and push to `main`. Dependabot proposes weekly updates for npm packages and GitHub Actions, with a 3-day cooldown.
+
+## Editing content
+| What | Where |
+|---|---|
+| Skills shown in the terminal | `src/data/skills.ts` |
+| Hobbies, favourites (games, cars, websites) and tools | `src/data/about.ts` |
+| Terminal commands | `src/components/terminal/commands.ts` (tests in `commands.test.ts`) |
+| Intro text | `src/app/page.tsx` |
+| Sidebar (photo, social links) | `src/components/sidebar.tsx` |
+| Security headers and image settings | `next.config.js` |
+
+Personal content in `about.ts` is only shown through terminal commands, but is also rendered (hidden) in the HTML so search engines can index it.
 
 ## Contact
-For any inquiries or to get in touch with me, you can reach out via email at [hello@kelvin.st](mailto:hello@kelvin.st).
-
----
-
-Explore the website at [kelvin.st](https://kelvin.st) to learn more about my skills, projects, and experiences.
+Questions or feedback? Email [hello@kelvin.st](mailto:hello@kelvin.st) or open an issue.
