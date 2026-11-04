@@ -1,27 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGraduationCap, faCode, faSeedling, faRoute, faCircle, faCloud, faPalette } from '@fortawesome/free-solid-svg-icons'
-import { skills } from '@/data/skills'
+import { faGraduationCap, faCode, faSeedling, faRoute, faCloud, faPalette } from '@fortawesome/free-solid-svg-icons'
+import SkillsTerminal from '@/components/SkillsTerminal'
 
 export default function Home() {
   return (
       <div className='grid'>
-        <div className='grid gap-2 mb-5 md:mb-10'>
-            <p className="text-4xl md:text-5xl 2xl:text-6xl ">Hi, I&apos;m Kelvin!</p>
-            <p className="text-xl md:text-2xl 2xl:text-3xl">Started as a student <FontAwesomeIcon icon={faGraduationCap} /> web designer <FontAwesomeIcon icon={faPalette} /></p>
-            <p className="text-xl md:text-2xl 2xl:text-3xl">Followed <FontAwesomeIcon icon={faRoute} /> my passion to become a front and backend web developer <FontAwesomeIcon icon={faCode} /></p>
-            <p className="text-xl md:text-2xl 2xl:text-3xl">And finally grown up <FontAwesomeIcon icon={faSeedling} /> to be a DevOps Tech Lead <FontAwesomeIcon icon={faCloud} /></p>
-        </div>
-        <div className='grid gap-2'>
-          <p className="text-xl md:text-2xl 2xl:text-3xl">And did you know that I picked up some cool skills along the way?</p>
-          <ul className="flex flex-wrap max-w-4xl gap-2 xl:gap-3 text-xs md:text-lg 2xl:text-xl">
-            {skills.map((skill) => (
-              <li key={skill}>
-                <FontAwesomeIcon className="text-xs align-middle mr-1" icon={faCircle} />
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <section className='grid gap-2 mb-5 md:mb-10' aria-labelledby="intro-heading">
+            <h2 id="intro-heading" className="text-3xl md:text-4xl 2xl:text-5xl">Hi, I&apos;m Kelvin!</h2>
+            <p className="text-lg md:text-xl 2xl:text-2xl">Started as a student <FontAwesomeIcon icon={faGraduationCap} aria-hidden /> web designer <FontAwesomeIcon icon={faPalette} aria-hidden /></p>
+            <p className="text-lg md:text-xl 2xl:text-2xl">Followed <FontAwesomeIcon icon={faRoute} aria-hidden /> my passion to become a front and backend web developer <FontAwesomeIcon icon={faCode} aria-hidden /></p>
+            <p className="text-lg md:text-xl 2xl:text-2xl">And finally grown up <FontAwesomeIcon icon={faSeedling} aria-hidden /> to be a DevOps Tech Lead <FontAwesomeIcon icon={faCloud} aria-hidden /></p>
+        </section>
+        <section className='grid gap-3' aria-labelledby="skills-heading">
+          <h2 id="skills-heading" className="text-lg md:text-xl 2xl:text-2xl">And did you know that I picked up some cool skills along the way?</h2>
+          <SkillsTerminal />
+        </section>
       </div>
   )
 }
