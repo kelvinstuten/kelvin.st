@@ -10,6 +10,13 @@ updates:
     # Only propose releases that are at least 3 days old (supply-chain safety)
     cooldown:
       default-days: 3
+    ignore:
+      # Node types must match the Node version in .nvmrc / engines (24); bump them together by hand
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # TypeScript 7 is a full rewrite; upgrade by hand once Next.js supports it
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       dependencies:
         patterns:
