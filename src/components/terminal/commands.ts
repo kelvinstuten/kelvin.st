@@ -15,7 +15,7 @@ export type Output =
 export const ABOUT_IDS = ['hobbies', 'favorites', 'tools']
 export const FILES = ['skills/', ...ABOUT_IDS.map((id) => `${id}.txt`)]
 // Commands offered by Tab completion (hidden gimmicks are left out on purpose)
-export const COMMANDS = ['help', 'ls', 'cat', 'skills', ...ABOUT_IDS, 'whoami', 'contact', 'clear']
+export const COMMANDS = ['help', 'ls', 'cat', 'skills', ...ABOUT_IDS, 'whoami', 'contact', 'credits', 'clear']
 export const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
 
 export const FORTUNES = [
@@ -68,6 +68,7 @@ export function run(raw: string): Output | 'clear' {
           ['tools', 'tools I work with'],
           ['whoami', 'who is this guy?'],
           ['contact', 'ways to reach me'],
+          ['credits', 'how this site was built'],
           ['ls / cat', 'browse it like files'],
           ['clear', 'clear the screen'],
         ],
@@ -104,6 +105,12 @@ export function run(raw: string): Output | 'clear' {
       return text('email     hello@kelvin.st', 'linkedin  linkedin.com/in/kelvinstuten', 'github    github.com/kelvinstuten')
     case 'clear':
       return 'clear'
+    case 'credits':
+      return text(
+        { text: 'kelvin.st', tone: 'accent' },
+        'Built with Next.js, React, TypeScript and Tailwind CSS.',
+        { text: 'Hosted on Vercel.', tone: 'muted' },
+      )
 
     // --- Hidden gimmicks (not listed in help) ---
     case 'sudo':

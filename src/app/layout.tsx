@@ -27,7 +27,7 @@ const inter = Inter({ subsets: ['latin'] })
 const siteUrl = 'https://kelvin.st'
 const title = 'Kelvin Stuten | DevOps Tech Lead'
 const description =
-  'Kelvin Stuten is a DevOps Tech Lead specializing in Azure, Kubernetes, CI/CD pipelines, and cloud-native web development.'
+  'Kelvin Stuten is a DevOps Tech Lead specializing in Azure, Kubernetes, CI/CD pipelines, AI agents and cloud-native web development.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

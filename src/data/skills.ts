@@ -27,6 +27,17 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: 'ai',
+    label: 'AI',
+    skills: [
+      'Building AI agents',
+      'AI-assisted development',
+      'Vibe coding',
+      'Claude & other LLMs',
+      'Local AI development (Unsloth Studio)',
+    ],
+  },
+  {
     id: 'dev',
     label: 'Development',
     skills: ['Webdevelopment', '.NET', 'C#', 'Python', 'TypeScript', 'Javascript', 'ReactJS', 'NextJS', 'HTML', 'CSS', 'jQuery'],

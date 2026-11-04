@@ -27,7 +27,7 @@ describe('run', () => {
     const output = run('help')
     assert.ok(output !== 'clear' && output.kind === 'table')
     const listed = output.rows.map(([cmd]) => cmd)
-    for (const cmd of ['hobbies', 'favorites', 'tools', 'whoami', 'contact', 'clear']) {
+    for (const cmd of ['hobbies', 'favorites', 'tools', 'whoami', 'contact', 'credits', 'clear']) {
       assert.ok(listed.includes(cmd), `help should list ${cmd}`)
     }
     for (const hidden of ['sudo', 'fortune', 'coffee', 'games', 'cars']) {
@@ -43,6 +43,17 @@ describe('run', () => {
     const one = run('skills cloud')
     assert.ok(one !== 'clear' && one.kind === 'groups')
     assert.deepEqual(one.groups.map((g) => g.id), ['cloud'])
+  })
+
+  it('has an AI skill group', () => {
+    const output = run('skills ai')
+    assert.ok(output !== 'clear' && output.kind === 'groups')
+    assert.equal(output.groups[0].label, 'AI')
+    assert.ok(output.groups[0].skills.includes('Building AI agents'))
+  })
+
+  it('shows how the site was built with credits', () => {
+    assert.match(asText(run('credits')), /Next\.js, React, TypeScript and Tailwind CSS/)
   })
 
   it('reports an unknown skill group', () => {
@@ -98,6 +109,7 @@ describe('complete', () => {
   it('completes a unique command prefix', () => {
     assert.equal(complete('he'), 'help')
     assert.equal(complete('to'), 'tools')
+    assert.equal(complete('cr'), 'credits')
   })
 
   it('leaves ambiguous or unknown input unchanged', () => {

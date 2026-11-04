@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Kelvin Stuten | DevOps Tech Lead',
     short_name: 'Kelvin Stuten',
-    description: 'Kelvin Stuten is a DevOps Tech Lead specializing in Azure, Kubernetes, CI/CD pipelines, and cloud-native web development.',
+    description: 'Kelvin Stuten is a DevOps Tech Lead specializing in Azure, Kubernetes, CI/CD pipelines, AI agents and cloud-native web development.',
     start_url: '/',
     display: 'standalone',
     background_color: '#012030',
