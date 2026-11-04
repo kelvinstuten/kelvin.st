@@ -72,6 +72,48 @@ export const metadata: Metadata = {
   ],
 }
 
+// Structured data (schema.org) for search engines. Only describe what is visible on the page.
+// WebSite gives Google the site name, ProfilePage marks this as a profile of one person.
+const personId = `${siteUrl}/#person`
+const websiteId = `${siteUrl}/#website`
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: siteUrl,
+      name: 'Kelvin Stuten',
+      alternateName: 'kelvin.st',
+      publisher: { '@id': personId },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${siteUrl}/#profilepage`,
+      url: siteUrl,
+      name: title,
+      isPartOf: { '@id': websiteId },
+      mainEntity: { '@id': personId },
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Kelvin Stuten',
+      url: siteUrl,
+      jobTitle: 'DevOps Tech Lead',
+      hasOccupation: { '@type': 'Occupation', name: 'DevOps Tech Lead' },
+      email: 'hello@kelvin.st',
+      image: `${siteUrl}/images/kelvin-stuten-2026.jpg`,
+      sameAs: [
+        'https://www.linkedin.com/in/kelvinstuten',
+        'https://github.com/kelvinstuten',
+        'https://www.instagram.com/kelvinstuten',
+      ],
+      knowsAbout: skills,
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -83,23 +125,7 @@ export default function RootLayout({
         <ThemeProvider>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Person',
-                name: 'Kelvin Stuten',
-                url: siteUrl,
-                jobTitle: 'DevOps Tech Lead',
-                email: 'hello@kelvin.st',
-                image: `${siteUrl}/images/kelvin-stuten-2026.jpg`,
-                sameAs: [
-                  'https://www.linkedin.com/in/kelvinstuten',
-                  'https://github.com/kelvinstuten',
-                  'https://www.instagram.com/kelvinstuten',
-                ],
-                knowsAbout: skills,
-              }),
-            }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
           />
           <ThemeToggle />
           <div className="font-sans flex min-h-dvh flex-col md:flex-row">
