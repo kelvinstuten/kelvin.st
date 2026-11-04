@@ -2,12 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { skillGroups, type SkillGroup } from '@/data/skills'
+import { aboutById, aboutSections, type AboutSection } from '@/data/about'
 
 type Tone = 'default' | 'muted' | 'accent' | 'error'
 type Output =
   | { kind: 'groups'; groups: SkillGroup[] }
   | { kind: 'text'; lines: { text: string; tone?: Tone }[] }
   | { kind: 'table'; title: string; rows: [string, string][]; footer: string[] }
+  | { kind: 'sections'; sections: AboutSection[] }
   | { kind: 'none' }
 type Entry = { id: number; command: string; output: Output; intro?: boolean }
 
@@ -19,7 +21,22 @@ const TYPE_DURATION_MS = 700
 const REVEAL_START_MS = TYPE_START_MS + TYPE_DURATION_MS + 250
 const REVEAL_STEP_MS = 140
 const PROMPT_DELAY_MS = REVEAL_START_MS + (skillGroups.length + 1) * REVEAL_STEP_MS
-const COMMANDS = ['help', 'skills', 'whoami', 'contact', 'clear']
+// Top-level personal commands; favourite games and cars only appear under `favorites`
+const ABOUT_IDS = ['hobbies', 'favorites']
+const FILES = ['skills/', ...ABOUT_IDS.map((id) => `${id}.txt`)]
+// Commands offered by Tab completion (hidden gimmicks are left out on purpose)
+const COMMANDS = ['help', 'ls', 'cat', 'skills', ...ABOUT_IDS, 'whoami', 'contact', 'clear']
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+
+const FORTUNES = [
+  'It works on my machine. Then we shipped your machine. That is how Docker was born.',
+  "There is no cloud. It's just someone else's computer.",
+  'Have you tried turning it off and on again?',
+  'YAML: Yet Another Misindented Line.',
+  'Friday deploys build character.',
+  'It is always DNS.',
+  '99 little bugs in the code, take one down, patch it around… 127 little bugs in the code.',
+]
 const GROUP_IDS = skillGroups.map((g) => g.id)
 
 const toneClass: Record<Tone, string> = {
@@ -29,12 +46,31 @@ const toneClass: Record<Tone, string> = {
   error: 'text-rose-400',
 }
 
+const text = (...lines: (string | { text: string; tone?: Tone })[]): Output => ({
+  kind: 'text',
+  lines: lines.map((line) => (typeof line === 'string' ? { text: line } : line)),
+})
+
+// `favorites` bundles the favourite games, cars and websites
+function sectionsFor(id: string): AboutSection[] | undefined {
+  if (!ABOUT_IDS.includes(id)) return undefined
+  const section = aboutById(id)
+  if (!section) return undefined
+  if (id !== 'favorites') return [section]
+  return [aboutById('games'), aboutById('cars'), section].filter((s): s is AboutSection => Boolean(s))
+}
+
 function run(raw: string): Output | 'clear' {
   const input = raw.trim()
   const [cmd, ...args] = input.split(/\s+/)
   const arg = args.join(' ').toLowerCase()
+  const name = cmd?.toLowerCase()
 
-  switch (cmd?.toLowerCase()) {
+  // Personal sections: `games`, `cars`, …
+  const sections = name ? sectionsFor(name) : undefined
+  if (sections) return { kind: 'sections', sections }
+
+  switch (name) {
     case '':
     case undefined:
       return { kind: 'none' }
@@ -43,61 +79,91 @@ function run(raw: string): Output | 'clear' {
         kind: 'table',
         title: 'Available commands:',
         rows: [
-          ['skills', 'list all skills'],
-          ['skills <group>', 'show one group, e.g. skills cloud'],
+          ['skills [group]', 'my skills, e.g. skills cloud'],
+          ['hobbies', 'what I do when I am not working'],
+          ['favorites', 'favourite games, cars & websites'],
           ['whoami', 'who is this guy?'],
           ['contact', 'ways to reach me'],
+          ['ls / cat', 'browse it like files'],
           ['clear', 'clear the screen'],
         ],
-        footer: [`Groups: ${GROUP_IDS.join(', ')}`, 'Tip: use Tab to autocomplete and ↑/↓ for history.'],
+        footer: [
+          `Skill groups: ${GROUP_IDS.join(', ')}`,
+          'Tip: use Tab to autocomplete and ↑/↓ for history.',
+        ],
       }
-    case 'skills':
-    case 'ls': {
+    case 'skills': {
       if (!arg || arg === '--all' || arg === '-a') return { kind: 'groups', groups: skillGroups }
       const group = skillGroups.find((g) => g.id === arg)
       if (group) return { kind: 'groups', groups: [group] }
-      return {
-        kind: 'text',
-        lines: [
-          { text: `skills: unknown group "${arg}"`, tone: 'error' },
-          { text: `Try one of: ${GROUP_IDS.join(', ')}`, tone: 'muted' },
-        ],
-      }
+      return text(
+        { text: `skills: unknown group "${arg}"`, tone: 'error' },
+        { text: `Try one of: ${GROUP_IDS.join(', ')}`, tone: 'muted' },
+      )
+    }
+    case 'ls':
+    case 'dir':
+      return text(FILES.join('  '), { text: 'Open one with "cat <file>", or just type its name.', tone: 'muted' })
+    case 'cat': {
+      if (!arg) return text({ text: 'cat: missing file. Try "ls".', tone: 'error' })
+      if (arg.replace(/\/$/, '') === 'skills') return text({ text: 'cat: skills: Is a directory. Try "skills".', tone: 'error' })
+      const file = sectionsFor(arg.replace(/\.txt$/, ''))
+      if (file) return { kind: 'sections', sections: file }
+      return text({ text: `cat: ${arg}: No such file or directory`, tone: 'error' })
     }
     case 'whoami':
-      return {
-        kind: 'text',
-        lines: [
-          { text: 'Kelvin Stuten', tone: 'accent' },
-          { text: 'DevOps Tech Lead. From web designer to developer to running the platform.' },
-        ],
-      }
+      return text(
+        { text: 'Kelvin Stuten', tone: 'accent' },
+        'DevOps Tech Lead. From web designer to developer to running the platform.',
+      )
     case 'contact':
-      return {
-        kind: 'text',
-        lines: [
-          { text: 'email     hello@kelvin.st' },
-          { text: 'linkedin  linkedin.com/in/kelvinstuten' },
-          { text: 'github    github.com/kelvinstuten' },
-        ],
-      }
+      return text('email     hello@kelvin.st', 'linkedin  linkedin.com/in/kelvinstuten', 'github    github.com/kelvinstuten')
     case 'clear':
       return 'clear'
+
+    // --- Hidden gimmicks (not listed in help) ---
     case 'sudo':
-      return {
-        kind: 'text',
-        lines: [{ text: 'visitor is not in the sudoers file. This incident will be reported. 😉', tone: 'error' }],
-      }
+      if (arg === 'make me a sandwich') return text('Okay. 🥪')
+      return text({ text: 'visitor is not in the sudoers file. This incident will be reported. 😉', tone: 'error' })
+    case 'make':
+      if (arg === 'me a sandwich') return text({ text: 'What? Make it yourself.', tone: 'error' })
+      return text({ text: 'make: *** No targets specified and no makefile found. Stop.', tone: 'error' })
+    case 'rm':
+      return text({ text: 'rm: permission denied. Nice try though. 😏', tone: 'error' })
+    case 'exit':
+    case 'logout':
+    case 'quit':
+      return text('There is no escape. 😄 (try "clear")')
+    case 'coffee':
+      return text('☕ Brewing… done. Productivity +10.')
+    case 'fortune':
+      return text({ text: FORTUNES[Math.floor(Math.random() * FORTUNES.length)], tone: 'accent' })
+    case 'ping':
+      return text(
+        `PING ${arg || 'kelvin.st'}: 64 bytes, time=1ms`,
+        { text: 'For a real reply: hello@kelvin.st 📬', tone: 'muted' },
+      )
+    case 'hire':
+      return text({ text: 'Great choice! 📬 hello@kelvin.st', tone: 'accent' })
+    case 'vim':
+    case 'vi':
+    case 'nano':
+      return text({ text: `${name}: you are now stuck forever. Just kidding, nothing opened. 😅`, tone: 'muted' })
+    case 'hello':
+    case 'hi':
+      return text('Hi there! 👋 Type "help" to look around.')
     default:
-      return {
-        kind: 'text',
-        lines: [{ text: `command not found: ${cmd}. Type "help" to see what I can do.`, tone: 'error' }],
-      }
+      return text({ text: `command not found: ${cmd}. Type "help" to see what I can do.`, tone: 'error' })
   }
 }
 
 function complete(value: string): string {
   const lower = value.toLowerCase()
+  if (lower.startsWith('cat ')) {
+    const partial = lower.slice('cat '.length)
+    const matches = FILES.filter((file) => file.startsWith(partial))
+    return matches.length === 1 ? `cat ${matches[0]}` : value
+  }
   if (lower.startsWith('skills ')) {
     const partial = lower.slice('skills '.length)
     const matches = GROUP_IDS.filter((id) => id.startsWith(partial))
@@ -115,6 +181,37 @@ function Prompt() {
       <span className="text-sky-400">~</span>
       <span className="text-white/50">$ </span>
     </span>
+  )
+}
+
+function SectionList({ section, asHeading }: { section: AboutSection; asHeading?: boolean }) {
+  const Heading = asHeading ? 'h3' : 'div'
+  return (
+    <div>
+      <Heading className={`font-normal ${toneClass.accent}`}>{section.title}</Heading>
+      <ul className="pl-2 text-white/85">
+        {section.items.map((item) => (
+          <li key={item.label}>
+            <span className="text-white/40" aria-hidden>
+              -{' '}
+            </span>
+            {item.href ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-300 underline decoration-sky-300/40 underline-offset-2 hover:decoration-sky-300"
+              >
+                {item.label}
+              </a>
+            ) : (
+              item.label
+            )}
+            {item.note && <span className="text-white/50"> ({item.note})</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -137,6 +234,15 @@ function OutputView({ output, intro }: { output: Output; intro?: boolean }) {
           <div key={line} className={toneClass.muted}>
             {line}
           </div>
+        ))}
+      </div>
+    )
+  }
+  if (output.kind === 'sections') {
+    return (
+      <div className="grid gap-2">
+        {output.sections.map((section) => (
+          <SectionList key={section.id} section={section} />
         ))}
       </div>
     )
@@ -212,6 +318,34 @@ export default function SkillsTerminal() {
       inputRef.current?.scrollIntoView({ block: 'nearest' })
     }
   }, [entries])
+
+  // Secret: the Konami code (↑↑↓↓←→←→BA) anywhere on the page
+  useEffect(() => {
+    let position = 0
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+      position = key === KONAMI[position] ? position + 1 : key === KONAMI[0] ? 1 : 0
+      if (position === KONAMI.length) {
+        position = 0
+        setEntries((list) => [
+          ...list,
+          {
+            id: nextId.current++,
+            command: '↑ ↑ ↓ ↓ ← → ← → B A',
+            output: {
+              kind: 'text',
+              lines: [
+                { text: '🎮 Cheat code accepted: +30 lives.', tone: 'accent' },
+                { text: 'You found a secret. Respect.', tone: 'muted' },
+              ],
+            },
+          },
+        ])
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   const submit = useCallback(() => {
     const command = input
@@ -293,6 +427,13 @@ export default function SkillsTerminal() {
               )}
               <OutputView output={entry.output} intro={entry.intro} />
             </div>
+          ))}
+        </div>
+
+        {/* Personal content only appears through commands, but is in the HTML for search engines */}
+        <div hidden>
+          {aboutSections.map((section) => (
+            <SectionList key={section.id} section={section} asHeading />
           ))}
         </div>
 
