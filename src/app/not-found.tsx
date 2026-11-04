@@ -13,8 +13,8 @@ export default function NotFound() {
     <div className="grid max-w-2xl gap-6">
       <div className="grid gap-2">
         <p className="text-sm font-semibold uppercase tracking-widest text-white/60">Error 404</p>
-        <h1 className="text-4xl md:text-5xl 2xl:text-6xl">This page got lost in the pipeline</h1>
-        <p className="text-xl md:text-2xl 2xl:text-3xl text-white/80">
+        <h2 className="text-3xl md:text-4xl 2xl:text-5xl">This page got lost in the pipeline</h2>
+        <p className="text-lg md:text-xl 2xl:text-2xl text-white/80">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
       </div>

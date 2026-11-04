@@ -1,5 +1,4 @@
 // NextJS import
-import Link from "next/link"
 import Image from 'next/image'
 
 // FontAwesome import
@@ -32,15 +31,15 @@ export default function Sidebar() {
             <div className="place-content-center self-center mb-12">
                 <h3 className="text-center text-xl uppercase mb-2">Follow me on</h3>
                 <ul className="grid place-content-center gap-3">
-                    <li className="font-bold hover:scale-110"><Link className="block" href="https://www.linkedin.com/in/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faLinkedin} />Linkedin</Link></li>
-                    <li className="font-bold hover:scale-110"><Link className="block" href="https://github.com/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faGithub} />Github</Link></li>
-                    <li className="font-bold hover:scale-110"><Link className="block" href="https://www.instagram.com/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faInstagram} />Instagram</Link></li>
+                    <li className="font-bold hover:scale-110"><a className="block" href="https://www.linkedin.com/in/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faLinkedin} />Linkedin</a></li>
+                    <li className="font-bold hover:scale-110"><a className="block" href="https://github.com/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faGithub} />Github</a></li>
+                    <li className="font-bold hover:scale-110"><a className="block" href="https://www.instagram.com/kelvinstuten" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faInstagram} />Instagram</a></li>
                 </ul>
             </div>
             <div className="place-content-center self-center mb-12">
                 <h3 className="text-center text-md uppercase mb-2">or say hello!</h3>
                 <ul className="grid place-content-center gap-3">
-                    <li className="font-bold hover:scale-110"><Link className="block" href="mailto:hello@kelvin.st"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faEnvelope} />E-mail</Link></li>
+                    <li className="font-bold hover:scale-110"><a className="block" href="mailto:hello@kelvin.st"><FontAwesomeIcon className="text-3xl align-middle mr-2" icon={faEnvelope} />E-mail</a></li>
                 </ul>
             </div>
             <div className="place-content-bottom self-center xl:self-end">
