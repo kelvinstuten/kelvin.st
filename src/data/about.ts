@@ -30,10 +30,10 @@ export const aboutSections: AboutSection[] = [
     id: 'games',
     title: 'Favourite games',
     items: [
-      { label: 'iRacing' },
       { label: 'BeamNG.drive' },
       { label: 'Elden Ring' },
       { label: "Baldur's Gate 3" },
+      { label: 'iRacing' },
     ],
   },
   {
@@ -45,9 +45,16 @@ export const aboutSections: AboutSection[] = [
     id: 'favorites',
     title: 'Favourite websites',
     items: [
+      { label: 'reddit.com', href: 'https://www.reddit.com' },
       { label: 'tweakers.net', href: 'https://tweakers.net' },
       { label: 'youtube.com', href: 'https://www.youtube.com' },
+      { label: 'selfh.st', href: 'https://selfh.st/' },
     ],
+  },
+  {
+    id: 'tools',
+    title: 'Tools',
+    items: [{ label: 'Obsidian' }, { label: 'Visual Studio Code' }, { label: 'Claude' }],
   },
 ]
 
