@@ -253,7 +253,7 @@ export default function SkillsTerminal() {
       <div
         ref={scrollRef}
         onClick={focusInput}
-        className="term-scroll min-h-48 cursor-text p-4 md:max-h-[44rem] md:overflow-y-auto lg:max-h-[36rem]"
+        className="term-scroll min-h-48 cursor-text p-4 md:max-h-[54rem] md:overflow-y-auto lg:max-h-[40rem]"
       >
         <div role="log" aria-live="polite" aria-label="Terminal output">
           {entries.map((entry) => (

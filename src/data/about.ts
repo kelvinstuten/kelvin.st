@@ -23,6 +23,7 @@ export const aboutSections: AboutSection[] = [
       { label: 'Cars & motorsport' },
       { label: 'Homelab' },
       { label: 'Automating things' },
+      { label: 'Building AI apps', note: 'running them locally' },
       { label: 'Gaming' },
     ],
   },
@@ -54,7 +55,7 @@ export const aboutSections: AboutSection[] = [
   {
     id: 'tools',
     title: 'Tools',
-    items: [{ label: 'Obsidian' }, { label: 'Visual Studio Code' }, { label: 'Claude' }],
+    items: [{ label: 'Obsidian' }, { label: 'Visual Studio Code' }, { label: 'Claude' }, { label: 'Unsloth Studio' }],
   },
 ]
 
