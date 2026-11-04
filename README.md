@@ -11,7 +11,7 @@ The personal website of Kelvin Stuten, live at [kelvin.st](https://kelvin.st). I
 - Hosted on Vercel, with Vercel Analytics and Speed Insights
 
 ## Getting started
-Requires Node.js 24 (see `.nvmrc`; with nvm or fnm run `nvm use` / `fnm use`).
+Requires Node.js 26 (see `.nvmrc`; with nvm or fnm run `nvm use` / `fnm use`).
 
 ```bash
 git clone git@github.com:kelvinstuten/kelvin.st.git
